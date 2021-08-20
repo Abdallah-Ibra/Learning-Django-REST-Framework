@@ -12,5 +12,8 @@ urlpatterns = [
    path('api/v2/article/', views.ArticleAPIView.as_view()),
    path('api/v2/article/<int:id>', views.ArticleAPIViewDetails.as_view()),
    
+   ### Generic Views & Mixins ###
+   path('api/v3/article/', views.GenericListAPIView.as_view()),
+   path('api/v3/article/<int:id>', views.GenericAPIView.as_view()),
 
    ]

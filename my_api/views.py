@@ -98,3 +98,33 @@ class ArticleAPIViewDetails(APIView):
       article.delete()
       return Response(status= status.HTTP_204_NO_CONTENT)
 
+
+### Generic Views & Mixins ###
+
+class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
+   serializer_class = ArticleSerializer
+   queryset = Article.objects.all()
+   lookup_field = 'id'
+   
+   
+   def get(self, request,id):
+      if id:
+         return self.retrieve(request)
+      else:
+         return self.list(request)
+         
+   
+   def post(self, request,id):
+      return self.create(request,id)
+   
+   def put(self, request, id):
+      return self.update(request, id)
+   
+   def delete(self, request, id):
+      return self.destroy(request, id)
+   
+   
+class GenericListAPIView(generics.ListCreateAPIView): ## Show Data And Can Add A new Job
+   serializer_class = ArticleSerializer
+   queryset = Article.objects.all()
+   
