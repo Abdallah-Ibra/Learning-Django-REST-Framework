@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'my_api',
     # REST Framework
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
