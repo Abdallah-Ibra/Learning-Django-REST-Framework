@@ -1,8 +1,17 @@
 from django.urls import path, include
 
 from . import views
+from rest_framework.routers import DefaultRouter
+
+# Create a router and register our viewsets with it.
+router = DefaultRouter()
+router.register('api', views.ArticleViewSet, basename='api')
+
 
 urlpatterns = [
+   
+   ### ViewSets ###
+   path('', include(router.urls)),
    
    ### Function API View ###
    path('api/v1/article/', views.article_list),
