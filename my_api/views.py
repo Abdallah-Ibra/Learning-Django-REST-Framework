@@ -176,6 +176,6 @@ class GenericListAPIView(generics.ListCreateAPIView): ## Show Data And Can Add A
 
 
 ### Generic ViewSets  ###
-class ArticleViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, mixins.DestroyModelMixin):
+class ArticleViewSet(viewsets.ModelViewSet):
    serializer_class = ArticleSerializer
    queryset = Article.objects.all()
